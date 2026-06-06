@@ -3,53 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Happy Birthday, Mom — With Love & Grace</title>
+    <title>Happy Birthday, Mom – With Love & Gospel Grace</title>
     <!-- Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #fbf9f6;
-            --text-main: #2c2a29;
-            --accent-warm: #e5c1b8;
+            --bg-color: #faf8f5;
+            --text-main: #2d2a29;
+            --text-muted: #5c5754;
+            --accent-warm: #ebd5cf;
+            --accent-rose: #dcaea3;
             --accent-gold: #c5a880;
+            --accent-gold-dark: #a8885c;
             --white: #ffffff;
-            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.03);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(197, 168, 128, 0.2);
+            --shadow: 0 10px 30px rgba(45, 42, 41, 0.04);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.8;
             overflow-x: hidden;
+            letter-spacing: 0.02em;
         }
-
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
+            font-weight: 300;
+            color: var(--text-main);
         }
-
-        /* fade-in animation */
+        /* Smooth Fade-in Animation */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s cubic-bezier(0.2, 0.9, 0.3, 1.1), transform 1s ease;
+            transform: translateY(30px);
+            transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Hero Section */
         header {
             height: 100vh;
@@ -58,408 +64,805 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, rgba(251,249,246,0.8) 0%, #fbf9f6 100%),
-                        radial-gradient(circle at 20% 30%, rgba(229,193,184,0.25) 0%, transparent 55%);
+            position: relative;
+            background: linear-gradient(to bottom, rgba(250,248,245,0.4), var(--bg-color)), 
+                        radial-gradient(circle at 10% 20%, var(--accent-warm) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(197, 168, 128, 0.15) 0%, transparent 45%);
             padding: 20px;
         }
-
-        .hero-title {
-            font-size: 4rem;
-            font-style: italic;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            letter-spacing: -0.01em;
-        }
-
-        .hero-subtitle {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent-gold);
-            font-weight: 400;
-        }
-
-        /* Letter Section */
-        .letter-section {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 70px 25px;
-            text-align: center;
-        }
-
-        .letter-card {
-            background: var(--white);
-            padding: 48px 40px;
-            border-radius: 8px;
-            box-shadow: var(--soft-shadow);
-            border: 1px solid rgba(197, 168, 128, 0.25);
-            transition: transform 0.2s;
-        }
-
-        .letter-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            color: #4a4744;
-            margin-bottom: 28px;
-        }
-
-        /* gallery & memories section */
-        .gallery-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 25px 90px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            letter-spacing: 0.03em;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
+        .hero-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 2px;
-            background: var(--accent-gold);
-            margin: 12px auto 0;
-        }
-
-        .memories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .memory-card {
-            background: var(--white);
-            padding: 18px 18px 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
-            transition: transform 0.35s ease, box-shadow 0.3s;
-            border: 1px solid rgba(197, 168, 128, 0.15);
-        }
-
-        .memory-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .media-wrapper {
+            height: 100%;
+            pointer-events: none;
             overflow: hidden;
-            border-radius: 12px;
-            background: #f4efe7;
         }
-
-        .memory-card img, 
-        .memory-card video {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-            border-radius: 12px;
+        .hero-decorations::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--accent-warm);
+            filter: blur(80px);
+            top: 15%;
+            left: 10%;
+            opacity: 0.6;
         }
-
-        .memory-card img:hover {
-            transform: scale(1.02);
+        .hero-decorations::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.2);
+            filter: blur(100px);
+            bottom: 15%;
+            right: 10%;
+            opacity: 0.7;
         }
-
-        .memory-caption {
-            font-family: 'Cormorant Garamond', serif;
+        .hero-greeting {
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            text-align: center;
-            margin-top: 18px;
             font-size: 1.2rem;
-            color: var(--accent-gold);
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            color: var(--accent-gold-dark);
+            margin-bottom: 15px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
-
-        /* Music Player - elegant & subtle */
-        .music-player {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-radius: 60px;
-            padding: 10px 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(197, 168, 128, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.2s;
+        .hero-title {
+            font-size: 4.8rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.01);
         }
-
-        .music-info {
+        .hero-subtitle {
+            font-size: 0.95rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
             display: flex;
             flex-direction: column;
-            font-size: 0.8rem;
-            line-height: 1.3;
+            align-items: center;
+            color: var(--accent-gold-dark);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
         }
-
-        .music-title {
-            font-weight: 600;
-            color: var(--text-main);
-            letter-spacing: -0.2px;
+        .scroll-down svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 8px;
+            stroke: currentColor;
+            fill: none;
         }
-
-        .music-artist {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        /* Container Section styling */
+        section {
+            padding: 80px 25px;
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold-dark);
+            margin-bottom: 50px;
+        }
+        .section-divider {
+            width: 50px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 30px;
+        }
+        /* Featured Portrait Section (your image) */
+        .featured-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .featured-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .featured-image-frame {
+            border: 12px solid #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            transition: var(--transition);
+        }
+        .featured-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .featured-card:hover .featured-image-frame img {
+            transform: scale(1.05);
+        }
+        .featured-text {
+            padding-right: 20px;
+        }
+        .featured-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             font-style: italic;
         }
-
-        .music-btn {
-            background: var(--accent-warm);
-            border: none;
-            width: 36px;
-            height: 36px;
+        .featured-p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        /* Letter Section */
+        .letter-section {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .letter-card {
+            background: var(--white);
+            padding: 60px 50px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            position: relative;
+        }
+        .letter-card::before {
+            content: '“';
+            position: absolute;
+            top: 20px;
+            left: 45px;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            line-height: 1;
+            color: rgba(197, 168, 128, 0.15);
+            pointer-events: none;
+        }
+        .letter-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #4a4744;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        .letter-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--accent-gold-dark);
+            font-weight: 500;
+            font-style: italic;
+        }
+        /* Video Messages Section (your two videos) */
+        .video-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        .video-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(197, 168, 128, 0.12);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .video-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        /* Memory Gallery (decorative stock images, keep for visual richness) */
+        .gallery-section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding-bottom: 120px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .photo-frame {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+        .photo-frame:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(197, 168, 128, 0.12);
+        }
+        .photo-img-wrapper {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #f0ebe4;
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: sepia(5%) contrast(98%);
+        }
+        .photo-frame:hover img {
+            transform: scale(1.05);
+        }
+        .photo-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.15rem;
+            color: var(--accent-gold-dark);
+            font-weight: 500;
+        }
+        /* Floating Audio Controller (Gospel Song: Too Faithful) */
+        .audio-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 10px 24px 10px 14px;
+            box-shadow: 0 8px 32px rgba(45, 42, 41, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 380px;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .audio-widget:hover {
+            box-shadow: 0 12px 40px rgba(197, 168, 128, 0.2);
+            border-color: rgba(197, 168, 128, 0.4);
+            transform: translateY(-2px);
+        }
+        .disc-wrapper {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .vinyl-disc {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
+            background: radial-gradient(circle, #2d2b2a 40%, #151414 70%, #000000 100%);
+            border: 2px solid var(--accent-gold);
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: spin 5s linear infinite;
+            animation-play-state: paused;
+            transition: transform 0.3s ease;
+        }
+        .vinyl-disc::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 1px solid var(--accent-gold);
+        }
+        .audio-widget.playing .vinyl-disc {
+            animation-play-state: running;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .audio-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.85);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: none;
             cursor: pointer;
-            font-size: 1.2rem;
-            color: #2c2a29;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: var(--transition);
+            z-index: 10;
         }
-
-        .music-btn:hover {
-            background: #d6afa5;
-            transform: scale(0.96);
+        .audio-btn svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--text-main);
         }
-
+        .disc-wrapper:hover .audio-btn {
+            background: var(--white);
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+        .audio-info {
+            display: flex;
+            flex-direction: column;
+            width: 140px;
+        }
+        .audio-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--text-main);
+        }
+        .audio-artist {
+            font-size: 0.65rem;
+            color: var(--accent-gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 1px solid rgba(197, 168, 128, 0.3);
+            padding-left: 12px;
+        }
+        .mute-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .mute-btn:hover {
+            color: var(--accent-gold-dark);
+            transform: scale(1.1);
+        }
+        .mute-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .volume-slider {
+            width: 60px;
+            height: 3px;
+            -webkit-appearance: none;
+            background: rgba(197, 168, 128, 0.3);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-gold-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+        }
+        .waves-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 15px;
+            width: 25px;
+        }
+        .wave-bar {
+            width: 2px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            animation: none;
+        }
+        .audio-widget.playing .wave-bar {
+            animation: pulse-wave 1s ease-in-out infinite alternate;
+        }
+        .audio-widget.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; height: 60%; }
+        .audio-widget.playing .wave-bar:nth-child(2) { animation-delay: 0.3s; height: 30%; }
+        .audio-widget.playing .wave-bar:nth-child(3) { animation-delay: 0.6s; height: 90%; }
+        .audio-widget.playing .wave-bar:nth-child(4) { animation-delay: 0.2s; height: 50%; }
+        @keyframes pulse-wave {
+            0% { height: 10%; }
+            100% { height: 100%; }
+        }
+        .music-tip {
+            position: fixed;
+            bottom: 90px;
+            right: 35px;
+            z-index: 999;
+            background: var(--accent-gold-dark);
+            color: var(--white);
+            font-size: 0.7rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: float 2s ease-in-out infinite alternate;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-6px); }
+        }
         footer {
             text-align: center;
-            padding: 45px 20px 35px;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            color: var(--accent-gold);
+            padding: 60px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold-dark);
             text-transform: uppercase;
-            border-top: 1px solid rgba(197, 168, 128, 0.2);
-            margin-top: 30px;
+            background: linear-gradient(to top, rgba(240, 235, 228, 0.3), transparent);
+            border-top: 1px solid rgba(197, 168, 128, 0.1);
         }
-
-        @media (max-width: 680px) {
-            .hero-title { font-size: 2.6rem; }
-            .letter-card { padding: 28px 20px; }
-            .letter-text { font-size: 1.25rem; }
-            .memories-grid { gap: 22px; }
-            .memory-card img, .memory-card video { height: 260px; }
-            .music-player { bottom: 20px; right: 20px; padding: 6px 16px; }
-            .music-title { font-size: 0.7rem; }
+        @media (max-width: 850px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+                padding: 30px;
+                gap: 30px;
+            }
+            .featured-text {
+                padding-right: 0;
+                text-align: center;
+            }
+            .featured-image-frame {
+                max-width: 450px;
+                margin: 0 auto;
+            }
         }
-
-        /* loading graceful */
-        video:focus, audio:focus {
-            outline: none;
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .section-title { font-size: 2rem; }
+            .letter-card { padding: 40px 25px; }
+            .letter-text { font-size: 1.3rem; }
+            .video-grid { grid-template-columns: 1fr; }
+            .audio-widget {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                max-width: none;
+                justify-content: space-between;
+            }
+            .music-tip {
+                bottom: 85px;
+                right: 25px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.8rem; }
+            .photo-img-wrapper { height: 280px; }
+            .audio-info { width: 100px; }
+            .volume-slider { display: none; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Hero / Opening -->
+    <div class="hero-decorations"></div>
+    <!-- Header / Hero -->
     <header>
+        <p class="hero-greeting fade-in">Happy Birthday</p>
         <h1 class="hero-title fade-in">Happy Birthday, Mom</h1>
         <p class="hero-subtitle fade-in">Celebrating the heart of our home</p>
+        <a href="#letter" class="scroll-down">
+            Scroll Down
+            <svg viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
     </header>
 
-    <!-- Heartfelt Letter Section -->
-    <section class="letter-section fade-in">
-        <div class="letter-card">
-            <p class="letter-text">
-                "To the one who fills our lives with endless warmth, grace, and unconditional love. Today is a celebration of beautiful moments, gentle guidance, and the incredible light you bring into the world every single day."
-            </p>
-            <p class="letter-text" style="font-size: 1.15rem; color: var(--accent-gold); font-weight: 500;">
-                With all our love, always.
-            </p>
+    <!-- Especially For You Section (YOUR IMAGE: mom-image1.jpg) -->
+    <section id="featured" class="fade-in">
+        <div class="featured-section">
+            <div class="featured-card">
+                <div class="featured-image-frame">
+                    <img src="mom-image1.jpg" alt="Happy Birthday Mom - Precious Portrait">
+                </div>
+                <div class="featured-text">
+                    <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-gold-dark); margin-bottom: 8px;">Our Treasure</p>
+                    <h2 class="featured-title">To Our Beloved Mom</h2>
+                    <div style="width: 40px; height: 1px; background-color: var(--accent-gold); margin-bottom: 15px;"></div>
+                    <p class="featured-p">
+                        Your presence is a gentle guide, your love is a strong anchor, and your smile fills our days with sunshine. Today, we celebrate you with these sweet memories.
+                    </p>
+                    <p class="featured-p" style="font-style: italic; font-family: 'Playfair Display', serif;">
+                        "Strength and dignity are her clothing, and she laughs at the time to come."
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Treasured Memories: 1 Image + 2 Videos -->
-    <section class="gallery-section fade-in">
-        <h2 class="section-title">Treasured Moments</h2>
-        <div class="memories-grid">
-            
-            <!-- Image Card: mom-image1.jpg -->
-            <div class="memory-card">
-                <div class="media-wrapper">
-                    <img src="mom-image1.jpg" alt="Mom's beautiful smile and warm presence" loading="lazy">
-                </div>
-                <p class="memory-caption">✨ A timeless treasure ✨</p>
-            </div>
-
-            <!-- Video 1: mom-video1.mp4 -->
-            <div class="memory-card">
-                <div class="media-wrapper">
-                    <video controls preload="metadata" playsinline>
-                        <source src="mom-video1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <p class="memory-caption">🎥 Laughter & love — in motion</p>
-            </div>
-
-            <!-- Video 2: mom-video2.mp4 -->
-            <div class="memory-card">
-                <div class="media-wrapper">
-                    <video controls preload="metadata" playsinline>
-                        <source src="mom-video2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <p class="memory-caption">🎥 Precious memories with you</p>
+    <!-- Heartfelt Letter -->
+    <section id="letter" class="fade-in">
+        <div class="letter-section">
+            <div class="letter-card">
+                <p class="letter-text">
+                    "To the one who fills our lives with endless warmth, grace, and unconditional love. Today is a celebration of beautiful moments, gentle guidance, and the incredible light you bring into the world every single day."
+                </p>
+                <p class="letter-signature">
+                    With all our love, always.
+                </p>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 35px; font-style: italic; color: #a0896b; font-size: 0.9rem;">
-            Every moment with you is a gift we hold close.
-        </p>
     </section>
 
-    <!-- Gospel Background Song: "Too Faithful" by Moses Bliss -->
-    <div class="music-player" id="musicPlayer">
-        <button class="music-btn" id="playPauseBtn" aria-label="Play gospel song">▶️</button>
-        <div class="music-info">
-            <span class="music-title">Too Faithful</span>
-            <span class="music-artist">Moses Bliss</span>
+    <!-- Video Messages Section (YOUR TWO VIDEOS: mom-video1.mp4 & mom-video2.mp4) -->
+    <section id="videos" class="fade-in">
+        <h2 class="section-title">Special Video Messages</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">A collection of warm wishes and memories</p>
+        
+        <div class="video-section">
+            <div class="video-grid">
+                <!-- Video Card 1: mom-video1.mp4 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="mom-image1.jpg">
+                            <source src="mom-video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3 class="video-title">Moments We Cherish</h3>
+                    <p class="video-caption">Reflecting on the beautiful journeys we've shared, filled with laughter, wisdom, and your unconditional care.</p>
+                </div>
+                <!-- Video Card 2: mom-video2.mp4 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="mom-image1.jpg">
+                            <source src="mom-video2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3 class="video-title">A Message of Love</h3>
+                    <p class="video-caption">A heartfelt compilation of our thoughts and wishes, reminding you of how much you are loved today and always.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Memory Gallery (decorative stock moments – keeps the page lively, your own image already above) -->
+    <section id="gallery" class="fade-in">
+        <h2 class="section-title">Beautiful Moments</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Captured memories of joy and love</p>
+        <div class="gallery-section">
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="Mom Moment 1">
+                    </div>
+                    <p class="photo-caption">Your beautiful smile</p>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=600" alt="Mom Moment 2">
+                    </div>
+                    <p class="photo-caption">Warmth and joy</p>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=600" alt="Mom Moment 3">
+                    </div>
+                    <p class="photo-caption">Celebrating you today</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         Made with love • gospel melody of grace • 2026
     </footer>
 
+    <!-- Background Gospel Song: "Too Faithful" by Moses Bliss -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="too-faithful.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Tip & Player -->
+    <div class="music-tip" id="music-tip">🎵 Tap to Play "Too Faithful" 🎵</div>
+    <div class="audio-widget" id="audio-widget">
+        <div class="disc-wrapper" id="disc-wrapper">
+            <div class="vinyl-disc"></div>
+            <button class="audio-btn" id="play-pause-btn" aria-label="Play Gospel Song">
+                <svg id="play-icon" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="audio-info">
+            <span class="audio-title" id="track-name">Too Faithful</span>
+            <span class="audio-artist">Moses Bliss</span>
+        </div>
+        <div class="audio-controls">
+            <button class="mute-btn" id="mute-btn" aria-label="Mute Music">
+                <svg id="volume-icon" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <svg id="mute-icon" viewBox="0 0 24 24" style="display: none;">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                </svg>
+            </button>
+            <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+            <div class="waves-container">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ===================== FADE-IN ON SCROLL =====================
-        const fadeElements = document.querySelectorAll('.fade-in');
+        // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // optional but efficient
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
-        
-        fadeElements.forEach(el => observer.observe(el));
-        // manually trigger hero elements visibility after load (already visible quickly)
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         window.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('header .fade-in').forEach(el => el.classList.add('visible'));
         });
 
-        // ===================== GOSPEL MUSIC PLAYER (Too Faithful - Moses Bliss) =====================
-        // Audio object: local file "too-faithful.mp3" (user must place it in the same GitHub repo "mom")
-        // If the file is missing, browser will show warning in console but graceful fallback.
-        const audio = new Audio();
-        // Using relative path — same directory as index.html inside 'mom' repository
-        audio.src = "too-faithful.mp3";
-        audio.loop = true;      // continuous background worship vibe
-        audio.preload = "auto";
-        
-        let isPlaying = false;
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        
-        // Function to update button icon
-        function updateButtonIcon(playing) {
-            if (playing) {
-                playPauseBtn.innerHTML = '⏸️';
-                playPauseBtn.setAttribute('aria-label', 'Pause gospel song');
+        // --- Gospel Music Player (Too Faithful) ---
+        const audio = document.getElementById('bg-music');
+        const widget = document.getElementById('audio-widget');
+        const playBtn = document.getElementById('play-pause-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const muteBtn = document.getElementById('mute-btn');
+        const volumeIcon = document.getElementById('volume-icon');
+        const muteIcon = document.getElementById('mute-icon');
+        const volumeSlider = document.getElementById('volume-slider');
+        const musicTip = document.getElementById('music-tip');
+        const discWrapper = document.getElementById('disc-wrapper');
+
+        // Set volume initial
+        audio.volume = 0.5;
+        volumeSlider.value = 0.5;
+
+        // Update track name if needed
+        const trackNameSpan = document.getElementById('track-name');
+        trackNameSpan.textContent = "Too Faithful";
+
+        // Toggle play/pause
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    widget.classList.add('playing');
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                    musicTip.style.opacity = '0';
+                }).catch(e => console.log("Playback failed:", e));
             } else {
-                playPauseBtn.innerHTML = '▶️';
-                playPauseBtn.setAttribute('aria-label', 'Play gospel song');
+                audio.pause();
+                widget.classList.remove('playing');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
             }
         }
-        
-        // Play with error handling (in case file is missing, console log but doesn't break website)
-        function playMusic() {
-            audio.play().then(() => {
-                isPlaying = true;
-                updateButtonIcon(true);
-            }).catch((err) => {
-                // Autoplay blocked or file missing: show subtle hint in console only, but keep user experience
-                console.warn("Audio playback not possible (maybe missing file or browser policy):", err);
-                // Even if play fails, we reset button state to reflect it's not playing
-                isPlaying = false;
-                updateButtonIcon(false);
-                // Optional gentle alert only if user clicks and still fails? we give extra feedback in console
-                if (err.name === 'NotSupportedError') {
-                    console.log("Please ensure 'too-faithful.mp3' is uploaded to the repo (same folder as index.html)");
-                }
-            });
-        }
-        
-        function pauseMusic() {
-            audio.pause();
-            isPlaying = false;
-            updateButtonIcon(false);
-        }
-        
-        // Toggle play/pause on button click (user interaction always works)
-        playPauseBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isPlaying) {
-                pauseMusic();
+
+        discWrapper.addEventListener('click', togglePlay);
+
+        // Mute / unmute
+        muteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            if (audio.muted) {
+                volumeIcon.style.display = 'none';
+                muteIcon.style.display = 'block';
             } else {
-                playMusic();
+                volumeIcon.style.display = 'block';
+                muteIcon.style.display = 'none';
             }
         });
-        
-        // Optional: When audio ends (should not happen because loop=true), reset UI
-        audio.addEventListener('ended', () => {
-            if (audio.loop) {
-                // loop will restart automatically, but just in case we sync icon
-                if (!audio.paused) {
-                    // still playing because loop restarted, do nothing
-                } else {
-                    isPlaying = false;
-                    updateButtonIcon(false);
-                }
-            } else {
-                isPlaying = false;
-                updateButtonIcon(false);
+
+        // Volume slider
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = parseFloat(e.target.value);
+            if (audio.muted) {
+                audio.muted = false;
+                volumeIcon.style.display = 'block';
+                muteIcon.style.display = 'none';
             }
         });
-        
-        // Preload / if the file is available, everything works. if not, UI remains non-intrusive.
-        // Add small helper: if the audio fails to load, provide tooltip style note
-        audio.addEventListener('error', (e) => {
-            console.log("🎵 Gospel song file not found? Please add 'too-faithful.mp3' to the repository (same folder as index.html). The player will still work once file is present.");
-            // keep the button functional, user can retry after file upload
-        });
-        
-        // Small stylistic grace: The music player appears elegant. 
-        // For user to also see that the song is "Too Faithful" — displayed on widget.
-        
-        // Additional: makes sure any autoplay restrictions don't start playback without user consent.
-        // We don't autoplay on load to respect browser policies; the mother/family can click the music note.
-        // But also we show that the song is ready to be played.
-        
-        // Because of some browsers, we also can add a subtle visual effect when the song is playing
-        // just for joy: animate the button pulse? (optional, not needed)
-        // No intrusive popup, maintain peaceful birthday mood.
-        
-        // Ensure videos are responsive and that the user’s local assets are correctly referenced
-        // (mom-video1.mp4, mom-video2.mp4, mom-image1.jpg, too-faithful.mp3)
-        // All assets must reside in the same github repository "mom" (root folder) or same directory.
-        console.log("🎂 Happy Birthday Mom — site ready. Gospel song ready to play with 'Too Faithful' by Moses Bliss.");
+
+        // Gentle first-click autoplay attempt (browser policy friendly)
+        let hasStarted = false;
+        document.body.addEventListener('click', () => {
+            if (!hasStarted && audio.paused) {
+                hasStarted = true;
+                audio.play().then(() => {
+                    widget.classList.add('playing');
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                    musicTip.style.opacity = '0';
+                }).catch(() => {});
+            }
+        }, { once: true });
     </script>
-    <!-- additional note for asset paths:
-         - mom-image1.jpg
-         - mom-video1.mp4
-         - mom-video2.mp4
-         - too-faithful.mp3  (to enable background gospel song)
-         All files must be placed in the same directory as index.html (GitHub repo "mom").
-         If the song file is not yet uploaded, the music player will wait; once uploaded, the button works.
-    -->
 </body>
 </html>
