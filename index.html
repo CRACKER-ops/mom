@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Happy Birthday, Mom – With Love & Gospel Grace</title>
+    <title>Happy Birthday, Mom – With Gospel Song</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
@@ -261,17 +261,57 @@
         }
         .music-tip {
             position: fixed;
-            bottom: 90px;
+            bottom: 100px;
             right: 35px;
             background: var(--accent-gold-dark);
             color: white;
-            font-size: 0.7rem;
-            padding: 6px 12px;
-            border-radius: 20px;
+            font-size: 0.75rem;
+            padding: 8px 14px;
+            border-radius: 30px;
             animation: float 2s infinite alternate;
             pointer-events: none;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-weight: 500;
         }
         @keyframes float { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+        .click-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s;
+        }
+        .click-overlay.hide {
+            display: none;
+        }
+        .click-overlay-content {
+            background: white;
+            padding: 28px 35px;
+            border-radius: 60px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            font-weight: 500;
+            color: var(--accent-gold-dark);
+            border: 1px solid var(--accent-gold);
+        }
+        .click-overlay-content p {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .click-overlay-content small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
         footer {
             text-align: center;
             padding: 60px 20px;
@@ -281,6 +321,7 @@
             .hero-title { font-size: 3.5rem; }
             .featured-card { grid-template-columns: 1fr; text-align: center; }
             .audio-widget { bottom: 20px; right: 20px; left: 20px; }
+            .music-tip { bottom: 90px; right: 25px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -291,12 +332,12 @@
         <a href="#letter" class="scroll-down">↓ Scroll</a>
     </header>
 
-    <!-- Featured image: mom-image1.jpg -->
+    <!-- YOUR IMAGE: mom-image1.jpg (with error fallback) -->
     <section class="fade-in">
         <div class="featured-section">
             <div class="featured-card">
                 <div class="featured-image-frame">
-                    <img src="mom-image1.jpg" alt="Mom's portrait" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x600?text=Mom+Image+Missing'; this.alt='Image missing – please upload mom-image1.jpg'">
+                    <img src="mom-image1.jpg" alt="Mom's portrait" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x600?text=Upload+mom-image1.jpg'; this.alt='Please upload mom-image1.jpg to this folder'">
                 </div>
                 <div class="featured-text">
                     <h2 class="featured-title">To Our Beloved Mom</h2>
@@ -307,7 +348,7 @@
         </div>
     </section>
 
-    <!-- Letter -->
+    <!-- Heartfelt Letter -->
     <section id="letter" class="fade-in">
         <div class="letter-section">
             <div class="letter-card">
@@ -317,7 +358,7 @@
         </div>
     </section>
 
-    <!-- Your two videos -->
+    <!-- YOUR VIDEOS: mom-video1.mp4 and mom-video2.mp4 -->
     <section class="fade-in">
         <h2 class="section-title">Special Video Messages</h2>
         <div class="section-divider"></div>
@@ -325,7 +366,7 @@
             <div class="video-grid">
                 <div class="video-card">
                     <div class="video-container">
-                        <video controls preload="metadata">
+                        <video controls preload="metadata" poster="mom-image1.jpg">
                             <source src="mom-video1.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -333,7 +374,7 @@
                 </div>
                 <div class="video-card">
                     <div class="video-container">
-                        <video controls preload="metadata">
+                        <video controls preload="metadata" poster="mom-image1.jpg">
                             <source src="mom-video2.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -356,17 +397,19 @@
         </div>
     </section>
 
-    <footer>Made with love • Gospel song "Too Faithful" • 2026</footer>
+    <footer>Made with love • Gospel song "Too Faithful" by Moses Bliss • 2026</footer>
 
-    <!-- Music: mom-background.mp3 (Moses Bliss - Too Faithful) -->
+    <!-- Audio element with auto-play attempt -->
     <audio id="bg-music" loop preload="auto">
         <source src="mom-background.mp3" type="audio/mpeg">
     </audio>
-    <div class="music-tip" id="music-tip">🎵 Tap to play "Too Faithful" 🎵</div>
-    <div class="audio-widget" id="audio-widget">
-        <div class="disc-wrapper" id="disc-wrapper">
+
+    <!-- Floating music player & tip -->
+    <div class="music-tip" id="musicTip">🎵 Tap to play "Too Faithful" 🎵</div>
+    <div class="audio-widget" id="audioWidget">
+        <div class="disc-wrapper" id="discWrapper">
             <div class="vinyl-disc"></div>
-            <button class="audio-btn" id="play-pause-btn">▶️</button>
+            <button class="audio-btn" id="playPauseBtn">▶️</button>
         </div>
         <div class="audio-info">
             <span class="audio-title">Too Faithful</span>
@@ -374,47 +417,88 @@
         </div>
     </div>
 
+    <!-- Overlay for browsers that block autoplay -->
+    <div id="autoplayOverlay" class="click-overlay hide">
+        <div class="click-overlay-content">
+            <p>🎶 Click anywhere to start the gospel song 🎶</p>
+            <small>"Too Faithful" by Moses Bliss</small>
+        </div>
+    </div>
+
     <script>
-        // Fade-in
+        // Fade-in on scroll
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         document.querySelectorAll('header .fade-in').forEach(el => el.classList.add('visible'));
 
-        // Music player
+        // ---------- AUTO-PLAY MUSIC (BEST EFFORT) ----------
         const audio = document.getElementById('bg-music');
-        const widget = document.getElementById('audio-widget');
-        const playBtn = document.getElementById('play-pause-btn');
-        const discWrapper = document.getElementById('disc-wrapper');
-        const musicTip = document.getElementById('music-tip');
+        const widget = document.getElementById('audioWidget');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const discWrapper = document.getElementById('discWrapper');
+        const musicTip = document.getElementById('musicTip');
+        const overlay = document.getElementById('autoplayOverlay');
 
         let isPlaying = false;
 
+        function startPlayback() {
+            if (isPlaying) return;
+            audio.play().then(() => {
+                isPlaying = true;
+                widget.classList.add('playing');
+                playPauseBtn.innerHTML = '⏸️';
+                musicTip.style.opacity = '0';
+                // Hide overlay if visible
+                if (!overlay.classList.contains('hide')) {
+                    overlay.classList.add('hide');
+                }
+            }).catch(err => {
+                console.log("Autoplay blocked – need user interaction", err);
+                // Show overlay to ask for click
+                overlay.classList.remove('hide');
+            });
+        }
+
+        function pausePlayback() {
+            audio.pause();
+            isPlaying = false;
+            widget.classList.remove('playing');
+            playPauseBtn.innerHTML = '▶️';
+        }
+
         function togglePlay() {
-            if (audio.paused) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    widget.classList.add('playing');
-                    playBtn.innerHTML = '⏸️';
-                    musicTip.style.opacity = '0';
-                }).catch(e => console.log("Audio error – make sure mom-background.mp3 is uploaded", e));
+            if (isPlaying) {
+                pausePlayback();
             } else {
-                audio.pause();
-                isPlaying = false;
-                widget.classList.remove('playing');
-                playBtn.innerHTML = '▶️';
+                startPlayback();
             }
         }
 
+        // Manual toggle via disc/button
         discWrapper.addEventListener('click', togglePlay);
 
-        // One-click attempt to enable audio (browsers require user interaction)
-        document.body.addEventListener('click', () => {
-            if (audio.paused && !isPlaying) {
-                togglePlay();
+        // TRY AUTOPLAY IMMEDIATELY
+        startPlayback();
+
+        // If overlay is visible, any click on overlay or body will start playback
+        const bodyClickListener = (e) => {
+            if (!isPlaying && audio.paused) {
+                startPlayback();
+                document.removeEventListener('click', bodyClickListener);
+                overlay.classList.add('hide');
             }
-        }, { once: true });
+        };
+        document.addEventListener('click', bodyClickListener);
+        // Also specifically on overlay
+        overlay.addEventListener('click', (e) => {
+            if (!isPlaying && audio.paused) {
+                startPlayback();
+                overlay.classList.add('hide');
+            }
+            e.stopPropagation();
+        });
     </script>
 </body>
 </html>
