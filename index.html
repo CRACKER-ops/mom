@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mom</title>
+    <!-- Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fbf9f6;
+            --text-main: #2c2a29;
+            --accent-warm: #e5c1b8;
+            --accent-gold: #c5a880;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        /* Smooth Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(251,249,246,0.5), var(--bg-color)), 
+                        radial-gradient(circle at 80% 20%, var(--accent-warm) 0%, transparent 40%);
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold);
+        }
+
+        /* Letter Section */
+        .letter-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 25px;
+            text-align: center;
+        }
+
+        .letter-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .letter-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            color: #4a4744;
+            margin-bottom: 25px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 25px 100px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .photo-frame {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: transform 0.4s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: sepia(10%) contrast(95%);
+        }
+
+        .photo-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 2.5rem; }
+            .letter-card { padding: 30px 20px; }
+            .photo-frame img { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header>
+        <h1 class="hero-title fade-in">Happy Birthday, Mom</h1>
+        <p class="hero-subtitle fade-in">Celebrating the heart of our home</p>
+    </header>
+
+    <!-- Heartfelt Letter -->
+    <section class="letter-section fade-in">
+        <div class="letter-card">
+            <p class="letter-text">
+                "To the one who fills our lives with endless warmth, grace, and unconditional love. Today is a celebration of beautiful moments, gentle guidance, and the incredible light you bring into the world every single day."
+            </p>
+            <p class="letter-text" style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600;">
+                With all our love, always.
+            </p>
+        </div>
+    </section>
+
+    <!-- Memory Gallery -->
+    <section class="gallery-section fade-in">
+        <h2 style="text-align: center; font-size: 2rem; letter-spacing: 0.05em;">Beautiful Moments</h2>
+        <div class="gallery-grid">
+            
+            <!-- Photo 1 -->
+            <div class="photo-frame">
+                <!-- Replace URL with an actual photo path -->
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="Mom Moment 1">
+                <p class="photo-caption">Your beautiful smile</p>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-frame">
+                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=600" alt="Mom Moment 2">
+                <p class="photo-caption">Warmth and joy</p>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="photo-frame">
+                <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=600" alt="Mom Moment 3">
+                <p class="photo-caption">Celebrating you today</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        Made with love • 2026
+    </footer>
+
+    <!-- JavaScript for elegant fade-in on scroll -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Trigger hero animations immediately on load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('header .fade-in').forEach(el => el.classList.add('visible'));
+        });
+    </script>
+</body>
+</html>
