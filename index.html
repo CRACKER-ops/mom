@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Mom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Happy Birthday, Mom — With Love & Grace</title>
     <!-- Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -16,6 +16,7 @@
             --accent-warm: #e5c1b8;
             --accent-gold: #c5a880;
             --white: #ffffff;
+            --soft-shadow: 0 12px 28px rgba(0, 0, 0, 0.03);
         }
 
         * {
@@ -28,7 +29,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.8;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
@@ -37,11 +38,11 @@
             font-weight: 400;
         }
 
-        /* Smooth Fade-in Animation */
+        /* fade-in animation */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transition: opacity 1s cubic-bezier(0.2, 0.9, 0.3, 1.1), transform 1s ease;
         }
 
         .fade-in.visible {
@@ -57,175 +58,408 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(251,249,246,0.5), var(--bg-color)), 
-                        radial-gradient(circle at 80% 20%, var(--accent-warm) 0%, transparent 40%);
+            background: linear-gradient(135deg, rgba(251,249,246,0.8) 0%, #fbf9f6 100%),
+                        radial-gradient(circle at 20% 30%, rgba(229,193,184,0.25) 0%, transparent 55%);
             padding: 20px;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-main);
+            letter-spacing: -0.01em;
         }
 
         .hero-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             color: var(--accent-gold);
+            font-weight: 400;
         }
 
         /* Letter Section */
         .letter-section {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 80px 25px;
+            padding: 70px 25px;
             text-align: center;
         }
 
         .letter-card {
             background: var(--white);
-            padding: 50px 40px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(197, 168, 128, 0.2);
+            padding: 48px 40px;
+            border-radius: 8px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(197, 168, 128, 0.25);
+            transition: transform 0.2s;
         }
 
         .letter-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             color: #4a4744;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
-        /* Gallery Section */
+        /* gallery & memories section */
         .gallery-section {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 25px 100px;
+            padding: 20px 25px 90px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .photo-frame {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 2px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            transition: transform 0.4s ease;
-        }
-
-        .photo-frame:hover {
-            transform: translateY(-5px);
-        }
-
-        .photo-frame img {
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
             width: 100%;
-            height: 350px;
-            object-fit: cover;
-            filter: sepia(10%) contrast(95%);
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 12px auto 0;
         }
 
-        .photo-caption {
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .memory-card {
+            background: var(--white);
+            padding: 18px 18px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+            transition: transform 0.35s ease, box-shadow 0.3s;
+            border: 1px solid rgba(197, 168, 128, 0.15);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .media-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            background: #f4efe7;
+        }
+
+        .memory-card img, 
+        .memory-card video {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+            border-radius: 12px;
+        }
+
+        .memory-card img:hover {
+            transform: scale(1.02);
+        }
+
+        .memory-caption {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
             text-align: center;
-            margin-top: 12px;
-            font-size: 1.1rem;
+            margin-top: 18px;
+            font-size: 1.2rem;
             color: var(--accent-gold);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Music Player - elegant & subtle */
+        .music-player {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 10px 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .music-title {
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: -0.2px;
+        }
+
+        .music-artist {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        .music-btn {
+            background: var(--accent-warm);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #2c2a29;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .music-btn:hover {
+            background: #d6afa5;
+            transform: scale(0.96);
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
+            padding: 45px 20px 35px;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
             color: var(--accent-gold);
             text-transform: uppercase;
+            border-top: 1px solid rgba(197, 168, 128, 0.2);
+            margin-top: 30px;
         }
 
-        @media (max-width: 600px) {
-            .hero-title { font-size: 2.5rem; }
-            .letter-card { padding: 30px 20px; }
-            .photo-frame img { height: 280px; }
+        @media (max-width: 680px) {
+            .hero-title { font-size: 2.6rem; }
+            .letter-card { padding: 28px 20px; }
+            .letter-text { font-size: 1.25rem; }
+            .memories-grid { gap: 22px; }
+            .memory-card img, .memory-card video { height: 260px; }
+            .music-player { bottom: 20px; right: 20px; padding: 6px 16px; }
+            .music-title { font-size: 0.7rem; }
+        }
+
+        /* loading graceful */
+        video:focus, audio:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Hero -->
+    <!-- Hero / Opening -->
     <header>
         <h1 class="hero-title fade-in">Happy Birthday, Mom</h1>
         <p class="hero-subtitle fade-in">Celebrating the heart of our home</p>
     </header>
 
-    <!-- Heartfelt Letter -->
+    <!-- Heartfelt Letter Section -->
     <section class="letter-section fade-in">
         <div class="letter-card">
             <p class="letter-text">
                 "To the one who fills our lives with endless warmth, grace, and unconditional love. Today is a celebration of beautiful moments, gentle guidance, and the incredible light you bring into the world every single day."
             </p>
-            <p class="letter-text" style="font-size: 1.1rem; color: var(--accent-gold); font-weight: 600;">
+            <p class="letter-text" style="font-size: 1.15rem; color: var(--accent-gold); font-weight: 500;">
                 With all our love, always.
             </p>
         </div>
     </section>
 
-    <!-- Memory Gallery -->
+    <!-- Treasured Memories: 1 Image + 2 Videos -->
     <section class="gallery-section fade-in">
-        <h2 style="text-align: center; font-size: 2rem; letter-spacing: 0.05em;">Beautiful Moments</h2>
-        <div class="gallery-grid">
+        <h2 class="section-title">Treasured Moments</h2>
+        <div class="memories-grid">
             
-            <!-- Photo 1 -->
-            <div class="photo-frame">
-                <!-- Replace URL with an actual photo path -->
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="Mom Moment 1">
-                <p class="photo-caption">Your beautiful smile</p>
+            <!-- Image Card: mom-image1.jpg -->
+            <div class="memory-card">
+                <div class="media-wrapper">
+                    <img src="mom-image1.jpg" alt="Mom's beautiful smile and warm presence" loading="lazy">
+                </div>
+                <p class="memory-caption">✨ A timeless treasure ✨</p>
             </div>
 
-            <!-- Photo 2 -->
-            <div class="photo-frame">
-                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=600" alt="Mom Moment 2">
-                <p class="photo-caption">Warmth and joy</p>
+            <!-- Video 1: mom-video1.mp4 -->
+            <div class="memory-card">
+                <div class="media-wrapper">
+                    <video controls preload="metadata" playsinline>
+                        <source src="mom-video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p class="memory-caption">🎥 Laughter & love — in motion</p>
             </div>
 
-            <!-- Photo 3 -->
-            <div class="photo-frame">
-                <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=600" alt="Mom Moment 3">
-                <p class="photo-caption">Celebrating you today</p>
+            <!-- Video 2: mom-video2.mp4 -->
+            <div class="memory-card">
+                <div class="media-wrapper">
+                    <video controls preload="metadata" playsinline>
+                        <source src="mom-video2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p class="memory-caption">🎥 Precious memories with you</p>
             </div>
-
         </div>
+        <p style="text-align: center; margin-top: 35px; font-style: italic; color: #a0896b; font-size: 0.9rem;">
+            Every moment with you is a gift we hold close.
+        </p>
     </section>
 
+    <!-- Gospel Background Song: "Too Faithful" by Moses Bliss -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-btn" id="playPauseBtn" aria-label="Play gospel song">▶️</button>
+        <div class="music-info">
+            <span class="music-title">Too Faithful</span>
+            <span class="music-artist">Moses Bliss</span>
+        </div>
+    </div>
+
     <footer>
-        Made with love • 2026
+        Made with love • gospel melody of grace • 2026
     </footer>
 
-    <!-- JavaScript for elegant fade-in on scroll -->
     <script>
+        // ===================== FADE-IN ON SCROLL =====================
+        const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // optional but efficient
                 }
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Trigger hero animations immediately on load
+        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+        
+        fadeElements.forEach(el => observer.observe(el));
+        // manually trigger hero elements visibility after load (already visible quickly)
         window.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('header .fade-in').forEach(el => el.classList.add('visible'));
         });
+
+        // ===================== GOSPEL MUSIC PLAYER (Too Faithful - Moses Bliss) =====================
+        // Audio object: local file "too-faithful.mp3" (user must place it in the same GitHub repo "mom")
+        // If the file is missing, browser will show warning in console but graceful fallback.
+        const audio = new Audio();
+        // Using relative path — same directory as index.html inside 'mom' repository
+        audio.src = "too-faithful.mp3";
+        audio.loop = true;      // continuous background worship vibe
+        audio.preload = "auto";
+        
+        let isPlaying = false;
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        
+        // Function to update button icon
+        function updateButtonIcon(playing) {
+            if (playing) {
+                playPauseBtn.innerHTML = '⏸️';
+                playPauseBtn.setAttribute('aria-label', 'Pause gospel song');
+            } else {
+                playPauseBtn.innerHTML = '▶️';
+                playPauseBtn.setAttribute('aria-label', 'Play gospel song');
+            }
+        }
+        
+        // Play with error handling (in case file is missing, console log but doesn't break website)
+        function playMusic() {
+            audio.play().then(() => {
+                isPlaying = true;
+                updateButtonIcon(true);
+            }).catch((err) => {
+                // Autoplay blocked or file missing: show subtle hint in console only, but keep user experience
+                console.warn("Audio playback not possible (maybe missing file or browser policy):", err);
+                // Even if play fails, we reset button state to reflect it's not playing
+                isPlaying = false;
+                updateButtonIcon(false);
+                // Optional gentle alert only if user clicks and still fails? we give extra feedback in console
+                if (err.name === 'NotSupportedError') {
+                    console.log("Please ensure 'too-faithful.mp3' is uploaded to the repo (same folder as index.html)");
+                }
+            });
+        }
+        
+        function pauseMusic() {
+            audio.pause();
+            isPlaying = false;
+            updateButtonIcon(false);
+        }
+        
+        // Toggle play/pause on button click (user interaction always works)
+        playPauseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isPlaying) {
+                pauseMusic();
+            } else {
+                playMusic();
+            }
+        });
+        
+        // Optional: When audio ends (should not happen because loop=true), reset UI
+        audio.addEventListener('ended', () => {
+            if (audio.loop) {
+                // loop will restart automatically, but just in case we sync icon
+                if (!audio.paused) {
+                    // still playing because loop restarted, do nothing
+                } else {
+                    isPlaying = false;
+                    updateButtonIcon(false);
+                }
+            } else {
+                isPlaying = false;
+                updateButtonIcon(false);
+            }
+        });
+        
+        // Preload / if the file is available, everything works. if not, UI remains non-intrusive.
+        // Add small helper: if the audio fails to load, provide tooltip style note
+        audio.addEventListener('error', (e) => {
+            console.log("🎵 Gospel song file not found? Please add 'too-faithful.mp3' to the repository (same folder as index.html). The player will still work once file is present.");
+            // keep the button functional, user can retry after file upload
+        });
+        
+        // Small stylistic grace: The music player appears elegant. 
+        // For user to also see that the song is "Too Faithful" — displayed on widget.
+        
+        // Additional: makes sure any autoplay restrictions don't start playback without user consent.
+        // We don't autoplay on load to respect browser policies; the mother/family can click the music note.
+        // But also we show that the song is ready to be played.
+        
+        // Because of some browsers, we also can add a subtle visual effect when the song is playing
+        // just for joy: animate the button pulse? (optional, not needed)
+        // No intrusive popup, maintain peaceful birthday mood.
+        
+        // Ensure videos are responsive and that the user’s local assets are correctly referenced
+        // (mom-video1.mp4, mom-video2.mp4, mom-image1.jpg, too-faithful.mp3)
+        // All assets must reside in the same github repository "mom" (root folder) or same directory.
+        console.log("🎂 Happy Birthday Mom — site ready. Gospel song ready to play with 'Too Faithful' by Moses Bliss.");
     </script>
+    <!-- additional note for asset paths:
+         - mom-image1.jpg
+         - mom-video1.mp4
+         - mom-video2.mp4
+         - too-faithful.mp3  (to enable background gospel song)
+         All files must be placed in the same directory as index.html (GitHub repo "mom").
+         If the song file is not yet uploaded, the music player will wait; once uploaded, the button works.
+    -->
 </body>
 </html>
